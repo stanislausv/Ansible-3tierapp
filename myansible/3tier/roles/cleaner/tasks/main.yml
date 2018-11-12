@@ -7,7 +7,7 @@
 - name: remove base tools and three tier app packages
   yum:
     state: absent 
-    name: [u'httpie,haproxy']
+    name: [u'httpie,python-pip,haproxy,tomcat']
     #name: "{{ item }}"
     #state: absent #only if items specified under name is present
   #with_items:

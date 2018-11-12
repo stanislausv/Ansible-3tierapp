@@ -19,3 +19,11 @@
   become: true
   roles:
     - { role: "./roles/tomcat" }
+
+- name: deploy postgres
+  hosts: appdbs
+  gather_facts: false
+  become: true
+  roles:
+    - { role: "./roles/geerlingguy.postgres" }
+
