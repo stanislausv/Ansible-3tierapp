@@ -1,0 +1,21 @@
+# VS 20181112
+- name: configuration
+  hosts: all
+  gather_facts: false # remove later! speeds up testing
+  become: true
+  roles:
+    - { role: "./roles/3tierrepo" } 
+
+- name: install and enable haproxy
+  hosts: frontends
+  gather_facts: false # remove later! speeds up testing
+  become: true 
+  roles:
+    - { role: "./roles/haproxy" }
+
+- name: deploy tomcat
+  hosts: apps
+  gather_facts: false
+  become: true
+  roles:
+    - { role: "./roles/tomcat" }
