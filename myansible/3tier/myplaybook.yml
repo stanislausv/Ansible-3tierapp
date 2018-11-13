@@ -20,10 +20,10 @@
   roles:
     - { role: "./roles/tomcat" }
 
-- name: deploy postgres
+- name: setup database tier
+  become: yes
   hosts: appdbs
-  gather_facts: false
-  become: true
   roles:
-    - { role: "./roles/geerlingguy.postgres" }
+    - {name: base-config, tags: base-config}
+    - {name: geerlingguy.postgresql, tags: [dbs, postgres]}
 
